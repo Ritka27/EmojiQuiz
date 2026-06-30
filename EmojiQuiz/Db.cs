@@ -12,6 +12,13 @@ static class Db
         using var ctx = new QuizContext();
         return ctx.Questions.Count();
     }
+    public static int CountByCategory(string? category)
+    {
+        using var ctx = new QuizContext();
+        if (string.IsNullOrEmpty(category))
+            return ctx.Questions.Count();
+        return ctx.Questions.Count(q => q.Category == category);
+    }
     public static void Add(string emoji, string answer, string category)
     {
         using var ctx = new QuizContext();
@@ -23,21 +30,55 @@ static class Db
         using var ctx = new QuizContext();
         return ctx.Questions.Any(q => q.Answer.ToLower() == answer.ToLower());
     }
-    public static Question? GetRandom()
+    public static Question? GetRandom(string? category = null)
     {
         using var ctx = new QuizContext();
-        return ctx.Questions
+        var query = ctx.Questions.AsQueryable();
+        if (!string.IsNullOrEmpty(category))
+            query = query.Where(q => q.Category == category);
+
+        return query
             .OrderBy(q => EF.Functions.Random())
             .FirstOrDefault();
     }
-    public static List<string> GetWrongAnswers(string correct, int count)
+    public static List<string> GetWrongAnswers(string correct, int count, string? category = null)
     {
         using var ctx = new QuizContext();
-        return ctx.Questions
-            .Where(q => q.Answer != correct)
+
+        // сначала пробуем найти неправильные ответы в той же категории
+        var fromCategory = ctx.Questions
+            .Where(q => q.Answer != correct);
+        if (!string.IsNullOrEmpty(category))
+            fromCategory = fromCategory.Where(q => q.Category == category);
+
+        var result = fromCategory
             .OrderBy(q => EF.Functions.Random())
             .Select(q => q.Answer)
             .Take(count)
+            .ToList();
+
+        // если не хватило — добираем из всех остальных категорий
+        if (result.Count < count)
+        {
+            int missing = count - result.Count;
+            var extra = ctx.Questions
+                .Where(q => q.Answer != correct && !result.Contains(q.Answer))
+                .OrderBy(q => EF.Functions.Random())
+                .Select(q => q.Answer)
+                .Take(missing)
+                .ToList();
+            result.AddRange(extra);
+        }
+
+        return result;
+    }
+    public static List<string> GetCategories()
+    {
+        using var ctx = new QuizContext();
+        return ctx.Questions
+            .Select(q => q.Category)
+            .Distinct()
+            .OrderBy(c => c)
             .ToList();
     }
     public static void SeedFromFile(string path)

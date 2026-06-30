@@ -2,7 +2,7 @@
 
 public partial class GameForm : Form
 {
-    private const int TotalQuestions = 10;
+    private int TotalQuestions = 10;
     private const int TimerSeconds = 15;
 
     private static readonly Random rng = new();
@@ -13,9 +13,17 @@ public partial class GameForm : Form
     private int timeLeft;
     private bool answered = false;
 
-    public GameForm()
+    private readonly string? selectedCategory;
+
+    public GameForm(string? category = null)
     {
         InitializeComponent();
+        selectedCategory = category;
+
+        int available = Db.CountByCategory(category);
+        TotalQuestions = Math.Min(10, available);
+        if (TotalQuestions < 1) TotalQuestions = 1;
+
         NextQuestion();
     }
 
@@ -33,7 +41,7 @@ public partial class GameForm : Form
         labelProgress.Text = questionIndex + "/" + TotalQuestions;
         UpdateProgressBar();
 
-        current = Db.GetRandom();
+        current = Db.GetRandom(selectedCategory);
         if (current == null)
         {
             labelEmoji.Text = "База пуста";
@@ -45,7 +53,7 @@ public partial class GameForm : Form
         labelCategory.Text = current.Category;
         labelResult.Text = "";
 
-        var options = Db.GetWrongAnswers(current.Answer, 3);
+        var options = Db.GetWrongAnswers(current.Answer, 3, selectedCategory);
         options.Add(current.Answer);
         Shuffle(options);
 

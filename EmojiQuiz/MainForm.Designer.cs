@@ -9,7 +9,7 @@ partial class MainForm
         if (disposing && (components != null)) components.Dispose();
         base.Dispose(disposing);
     }
-
+    private ComboBox comboCategory;
     private Label labelTitle;
     private Label labelSubtitle;
     private Button buttonPlay;
@@ -21,6 +21,7 @@ partial class MainForm
         labelSubtitle = new Label();
         buttonPlay = new Button();
         buttonAdmin = new Button();
+        comboCategory = new ComboBox();
         SuspendLayout();
 
         labelTitle.Text = "🎬 Угадай по эмодзи";
@@ -50,6 +51,14 @@ partial class MainForm
         buttonPlay.Cursor = Cursors.Hand;
         buttonPlay.Click += buttonPlay_Click;
 
+        comboCategory.Font = new Font("Segoe UI", 10F);
+        comboCategory.ForeColor = Color.White;
+        comboCategory.BackColor = Color.FromArgb(30, 30, 46);
+        comboCategory.FlatStyle = FlatStyle.Flat;
+        comboCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+        comboCategory.Location = new Point(60, 180);
+        comboCategory.Size = new Size(300, 30);
+
         buttonAdmin.Text = "⚙  Администратор";
         buttonAdmin.Font = new Font("Segoe UI", 12F);
         buttonAdmin.ForeColor = Color.FromArgb(240, 238, 252);
@@ -72,6 +81,7 @@ partial class MainForm
         Controls.Add(buttonAdmin);
         Text = "Угадай по эмодзи";
         StartPosition = FormStartPosition.CenterScreen;
+        Controls.Add(comboCategory);
         ResumeLayout(false);
     }
 }
