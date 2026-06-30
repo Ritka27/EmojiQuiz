@@ -6,6 +6,7 @@ static class Program
     static void Main()
     {
         ApplicationConfiguration.Initialize();
+        Application.SetCompatibleTextRenderingDefault(false);
 
         Db.EnsureCreated();
         Db.SeedFromFile("movies_ru_emoji.tsv");

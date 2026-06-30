@@ -1,15 +1,22 @@
-namespace EmojiQuiz
+namespace EmojiQuiz;
+
+public partial class MainForm : Form
 {
-    public partial class MainForm : Form
+    public MainForm()
     {
-        public MainForm()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
+    private void Form1_Load(object sender, EventArgs e)
+    {
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+    }
+    private void buttonPlay_Click(object sender, EventArgs e)
+    {
+        new GameForm().Show();
+    }
 
-        }
+    private void buttonAdmin_Click(object sender, EventArgs e)
+    {
+        new AdminForm().Show();
     }
 }
