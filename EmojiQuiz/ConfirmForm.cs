@@ -13,15 +13,14 @@ public partial class ConfirmForm : Form
     private void buttonYes_Click(object sender, EventArgs e)
     {
         Confirmed = true;
-        Close();
+        DialogResult = DialogResult.Yes;
     }
 
     private void buttonNo_Click(object sender, EventArgs e)
     {
         Confirmed = false;
-        Close();
+        DialogResult = DialogResult.No;
     }
-
     public static bool Ask(IWin32Window owner, string message)
     {
         using var f = new ConfirmForm(message);

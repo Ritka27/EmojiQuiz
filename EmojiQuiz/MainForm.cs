@@ -31,7 +31,6 @@ public partial class MainForm : Form
             if (!proceed) return;
         }
 
-        new GameForm(category).Show();
 
         new GameForm(category).Show();
     }

@@ -169,7 +169,7 @@ public partial class GameForm : Form
         {
             pause.Stop();
             pause.Dispose();
-            NextQuestion();
+            if (!IsDisposed) NextQuestion();
         };
         pause.Start();
     }
@@ -196,7 +196,8 @@ public partial class GameForm : Form
         bool confirmed = ConfirmForm.Ask(this, "Выйти из игры? Прогресс будет потерян.");
         if (confirmed)
         {
-            Close();
+
+            this.Close();
         }
         else if (!answered)
         {

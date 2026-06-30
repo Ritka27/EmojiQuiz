@@ -2,6 +2,8 @@ namespace EmojiQuiz;
 
 static class Program
 {
+    public static MainForm MainWindow { get; private set; } = null!;
+
     [STAThread]
     static void Main()
     {
@@ -11,6 +13,7 @@ static class Program
         Db.EnsureCreated();
         Db.SeedFromFile("movies_ru_emoji.tsv");
 
-        Application.Run(new MainForm());
+        MainWindow = new MainForm();
+        Application.Run(MainWindow);
     }
 }
