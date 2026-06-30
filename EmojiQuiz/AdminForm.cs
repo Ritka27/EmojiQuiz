@@ -19,6 +19,12 @@ public partial class AdminForm : Form
             return;
         }
 
+        if (Db.Exists(answer))
+        {
+            MessageBox.Show("Такой вопрос уже есть в базе.", "Дубликат");
+            return;
+        }
+
         Db.Add(emoji, answer, cat);
         MessageBox.Show("Вопрос добавлен!", "Готово");
 

@@ -18,6 +18,11 @@ static class Db
         ctx.Questions.Add(new Question { Emoji = emoji, Answer = answer, Category = category ?? "" });
         ctx.SaveChanges();
     }
+    public static bool Exists(string answer)
+    {
+        using var ctx = new QuizContext();
+        return ctx.Questions.Any(q => q.Answer.ToLower() == answer.ToLower());
+    }
     public static Question? GetRandom()
     {
         using var ctx = new QuizContext();
