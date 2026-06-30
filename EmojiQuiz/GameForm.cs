@@ -184,12 +184,15 @@ public partial class GameForm : Form
 
     private void buttonExit_Click(object sender, EventArgs e)
     {
-        var result = MessageBox.Show("Выйти из игры? Прогресс будет потерян.", "Подтверждение",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        if (result == DialogResult.Yes)
+        gameTimer.Stop();
+        bool confirmed = ConfirmForm.Ask(this, "Выйти из игры? Прогресс будет потерян.");
+        if (confirmed)
         {
-            gameTimer.Stop();
             Close();
+        }
+        else if (!answered)
+        {
+            gameTimer.Start();
         }
     }
 

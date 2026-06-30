@@ -15,18 +15,24 @@ public partial class AdminForm : Form
 
         if (emoji == "" || answer == "")
         {
-            MessageBox.Show("Заполните эмодзи и ответ.", "Ошибка");
+            NotifyForm.Show(this, "Заполните эмодзи и ответ.", "⚠️");
+            return;
+        }
+
+        if (ContainsLettersOrDigits(emoji))
+        {
+            NotifyForm.Show(this, "В поле «Эмодзи» можно вводить только эмодзи, без букв и цифр.", "⚠️");
             return;
         }
 
         if (Db.Exists(answer))
         {
-            MessageBox.Show("Такой вопрос уже есть в базе.", "Дубликат");
+            NotifyForm.Show(this, "Такой вопрос уже есть в базе.", "🔁");
             return;
         }
 
         Db.Add(emoji, answer, cat);
-        MessageBox.Show("Вопрос добавлен!", "Готово");
+        NotifyForm.Show(this, "Вопрос успешно добавлен!", "✅");
 
         textEmoji.Clear();
         textAnswer.Clear();
@@ -36,5 +42,13 @@ public partial class AdminForm : Form
     private void buttonBack_Click(object sender, EventArgs e)
     {
         Close();
+    }
+    private bool ContainsLettersOrDigits(string text)
+    {
+        foreach (char c in text)
+        {
+            if (char.IsLetterOrDigit(c)) return true;
+        }
+        return false;
     }
 }
