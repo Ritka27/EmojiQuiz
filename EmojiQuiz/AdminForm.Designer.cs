@@ -22,6 +22,8 @@ partial class AdminForm
 
     private void InitializeComponent()
     {
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
         labelTitle = new Label();
         labelEmoji = new Label();
         textEmoji = new TextBox();

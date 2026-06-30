@@ -27,6 +27,8 @@ partial class GameForm
 
     private void InitializeComponent()
     {
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
         labelScore = new Label();
         labelProgress = new Label();
         buttonExit = new Button();

@@ -17,6 +17,8 @@ partial class MainForm
 
     private void InitializeComponent()
     {
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
         labelTitle = new Label();
         labelSubtitle = new Label();
         buttonPlay = new Button();
@@ -32,7 +34,7 @@ partial class MainForm
         labelTitle.Location = new Point(0, 60);
         labelTitle.Size = new Size(420, 50);
 
-        labelSubtitle.Text = "Викторина по фильмам";
+        labelSubtitle.Text = "Кино, сериалы и не только";
         labelSubtitle.Font = new Font("Segoe UI", 11F);
         labelSubtitle.ForeColor = Color.FromArgb(136, 133, 170);
         labelSubtitle.AutoSize = false;

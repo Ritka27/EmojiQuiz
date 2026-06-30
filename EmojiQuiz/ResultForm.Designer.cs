@@ -19,6 +19,8 @@ partial class ResultForm
 
     private void InitializeComponent()
     {
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
         labelEmoji = new Label();
         labelTitle = new Label();
         labelScore = new Label();
