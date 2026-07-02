@@ -5,6 +5,7 @@ namespace EmojiQuiz;
 class QuizContext : DbContext
 {
     public DbSet<Question> Questions => Set<Question>();
+    public DbSet<Stats> Stats => Set<Stats>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {

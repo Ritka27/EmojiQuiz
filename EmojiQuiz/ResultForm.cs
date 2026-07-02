@@ -5,6 +5,7 @@ public partial class ResultForm : Form
     public ResultForm(int correct, int total)
     {
         InitializeComponent();
+        Db.UpdateStats(correct * 10);
 
         int pct = total > 0 ? (correct * 100 / total) : 0;
 
@@ -23,9 +24,8 @@ public partial class ResultForm : Form
 
     private void buttonAgain_Click(object sender, EventArgs e)
     {
-        Hide();
-        new GameForm().Show();
         Close();
+        new GameForm(null, GameForm.LastTimer, GameForm.LastQuestions).Show();
     }
 
     private void buttonMenu_Click(object sender, EventArgs e)

@@ -3,7 +3,8 @@
 public partial class GameForm : Form
 {
     private int TotalQuestions = 10;
-    private const int TimerSeconds = 15;
+    public static int LastTimer = 15;
+    public static int LastQuestions = 10;
 
     private static readonly Random rng = new();
     private Question? current;
@@ -15,13 +16,18 @@ public partial class GameForm : Form
 
     private readonly string? selectedCategory;
 
-    public GameForm(string? category = null)
+    private int timerSeconds;
+
+    public GameForm(string? category = null, int timerSec = 15, int totalQ = 10)
     {
         InitializeComponent();
         selectedCategory = category;
+        timerSeconds = timerSec;
+        LastTimer = timerSec;
+        LastQuestions = totalQ;
 
         int available = Db.CountByCategory(category);
-        TotalQuestions = Math.Min(10, available);
+        TotalQuestions = Math.Min(totalQ, available);
         if (TotalQuestions < 1) TotalQuestions = 1;
 
         NextQuestion();
@@ -78,7 +84,13 @@ public partial class GameForm : Form
             }
         }
 
-        timeLeft = TimerSeconds;
+        timeLeft = timerSeconds;
+        if (timerSeconds == 0)
+        {
+            labelTimer.Text = "∞";
+            labelTimer.ForeColor = Color.FromArgb(124, 108, 248);
+            return; // не запускаем таймер
+        }
         labelTimer.Text = timeLeft.ToString();
         labelTimer.ForeColor = Color.FromArgb(124, 108, 248);
         gameTimer.Start();
@@ -93,6 +105,7 @@ public partial class GameForm : Form
 
     private void gameTimer_Tick(object sender, EventArgs e)
     {
+        if (timerSeconds == 0) return;
         timeLeft--;
         labelTimer.Text = timeLeft.ToString();
         if (timeLeft <= 5)
@@ -176,11 +189,12 @@ public partial class GameForm : Form
 
     private void ShowResults()
     {
+        gameTimer.Stop();
+        var result = new ResultForm(correctCount, TotalQuestions);
+        result.FormClosed += (s, e) => Close();
+        result.Show();
         Hide();
-        new ResultForm(correctCount, TotalQuestions).Show();
-        Close();
     }
-
     private void Shuffle(List<string> list)
     {
         for (int i = list.Count - 1; i > 0; i--)
@@ -196,15 +210,13 @@ public partial class GameForm : Form
         bool confirmed = ConfirmForm.Ask(this, "Выйти из игры? Прогресс будет потерян.");
         if (confirmed)
         {
-
-            this.Close();
+            Close();
         }
         else if (!answered)
         {
             gameTimer.Start();
         }
     }
-
     private void button1_Click(object sender, EventArgs e) => CheckAnswer(button1.Text);
     private void button2_Click(object sender, EventArgs e) => CheckAnswer(button2.Text);
     private void button3_Click(object sender, EventArgs e) => CheckAnswer(button3.Text);

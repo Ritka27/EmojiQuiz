@@ -93,4 +93,31 @@ static class Db
         }
         ctx.SaveChanges();
     }
+    public static Stats GetStats()
+    {
+        using var ctx = new QuizContext();
+        var stats = ctx.Stats.FirstOrDefault();
+        if (stats == null)
+        {
+            stats = new Stats();
+            ctx.Stats.Add(stats);
+            ctx.SaveChanges();
+        }
+        return stats;
+    }
+
+    public static void UpdateStats(int score)
+    {
+        using var ctx = new QuizContext();
+        var stats = ctx.Stats.FirstOrDefault();
+        if (stats == null)
+        {
+            stats = new Stats();
+            ctx.Stats.Add(stats);
+        }
+        stats.GamesPlayed++;
+        if (score > stats.BestScore)
+            stats.BestScore = score;
+        ctx.SaveChanges();
+    }
 }
