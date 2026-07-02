@@ -51,7 +51,7 @@ partial class GameForm
         labelScore.ForeColor = Color.FromArgb(251, 191, 36);
         labelScore.AutoSize = false;
         labelScore.TextAlign = ContentAlignment.MiddleLeft;
-        labelScore.Location = new Point(15, 12);
+        labelScore.Location = new Point(15, 20);
         labelScore.Size = new Size(140, 25);
 
         labelProgress.Text = "1/10";
@@ -59,7 +59,7 @@ partial class GameForm
         labelProgress.ForeColor = Color.FromArgb(136, 133, 170);
         labelProgress.AutoSize = false;
         labelProgress.TextAlign = ContentAlignment.MiddleRight;
-        labelProgress.Location = new Point(200, 12);
+        labelProgress.Location = new Point(200, 20);
         labelProgress.Size = new Size(95, 25);
 
         buttonExit.Text = "Выйти";
@@ -68,85 +68,85 @@ partial class GameForm
         buttonExit.BackColor = Color.FromArgb(30, 30, 46);
         buttonExit.FlatStyle = FlatStyle.Flat;
         buttonExit.FlatAppearance.BorderSize = 0;
-        buttonExit.Location = new Point(305, 8);
+        buttonExit.Location = new Point(305, 15);
         buttonExit.Size = new Size(95, 32);
         buttonExit.Cursor = Cursors.Hand;
         buttonExit.Click += buttonExit_Click;
 
         // полоса прогресса
         panelProgressBar.BackColor = Color.FromArgb(37, 37, 56);
-        panelProgressBar.Location = new Point(15, 48);
-        panelProgressBar.Size = new Size(385, 4);
+        panelProgressBar.Location = new Point(15, 58);
+        panelProgressBar.Size = new Size(385, 5);
 
         panelProgressFill.BackColor = Color.FromArgb(124, 108, 248);
         panelProgressFill.Location = new Point(0, 0);
-        panelProgressFill.Size = new Size(38, 4);
+        panelProgressFill.Size = new Size(38, 5);
 
-        // карточка эмодзи
-        labelEmoji.Font = new Font("Segoe UI Emoji", 34F);
+        // карточка эмодзи — увеличенная
+        labelEmoji.Font = new Font("Segoe UI Emoji", 38F);
         labelEmoji.ForeColor = Color.White;
         labelEmoji.BackColor = Color.FromArgb(30, 30, 46);
         labelEmoji.AutoSize = false;
         labelEmoji.TextAlign = ContentAlignment.MiddleCenter;
-        labelEmoji.Location = new Point(15, 65);
-        labelEmoji.Size = new Size(385, 130);
+        labelEmoji.Location = new Point(15, 75);
+        labelEmoji.Size = new Size(385, 175);
 
-        // таймер (цифра по центру) + категория
+        // таймер + категория
         labelTimer.Text = "15";
         labelTimer.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
         labelTimer.ForeColor = Color.FromArgb(124, 108, 248);
         labelTimer.BackColor = Color.FromArgb(30, 30, 46);
         labelTimer.AutoSize = false;
         labelTimer.TextAlign = ContentAlignment.MiddleCenter;
-        labelTimer.Location = new Point(170, 205);
-        labelTimer.Size = new Size(40, 40);
+        labelTimer.Location = new Point(160, 262);
+        labelTimer.Size = new Size(40, 36);
 
         labelCategory.Text = "";
         labelCategory.Font = new Font("Segoe UI", 9F);
         labelCategory.ForeColor = Color.FromArgb(168, 154, 249);
         labelCategory.AutoSize = false;
-        labelCategory.TextAlign = ContentAlignment.MiddleCenter;
-        labelCategory.Location = new Point(220, 213);
-        labelCategory.Size = new Size(110, 24);
+        labelCategory.TextAlign = ContentAlignment.MiddleLeft;
+        labelCategory.Location = new Point(210, 267);
+        labelCategory.Size = new Size(120, 24);
 
-        // 4 кнопки ответов
-        button1.Font = new Font("Segoe UI", 10.5F);
+        // 4 кнопки ответов — крупнее
+        button1.Font = new Font("Segoe UI", 11F);
         button1.ForeColor = Color.White;
         button1.BackColor = Color.FromArgb(30, 30, 46);
         button1.FlatStyle = FlatStyle.Flat;
         button1.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
-        button1.Location = new Point(15, 260);
-        button1.Size = new Size(187, 55);
+        button1.Location = new Point(15, 310);
+        button1.Size = new Size(187, 65);
         button1.Cursor = Cursors.Hand;
         button1.Click += button1_Click;
 
-        button2.Font = new Font("Segoe UI", 10.5F);
+        button2.Font = new Font("Segoe UI", 11F);
         button2.ForeColor = Color.White;
         button2.BackColor = Color.FromArgb(30, 30, 46);
         button2.FlatStyle = FlatStyle.Flat;
         button2.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
-        button2.Location = new Point(213, 260);
-        button2.Size = new Size(187, 55);
+        button2.Location = new Point(213, 310);
+        button2.Size = new Size(187, 65);
         button2.Cursor = Cursors.Hand;
         button2.Click += button2_Click;
 
-        button3.Font = new Font("Segoe UI", 10.5F);
+        button3.Font = new Font("Segoe UI", 11F);
         button3.ForeColor = Color.White;
         button3.BackColor = Color.FromArgb(30, 30, 46);
         button3.FlatStyle = FlatStyle.Flat;
         button3.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
-        button3.Location = new Point(15, 325);
-        button3.Size = new Size(187, 55);
+        button3.Location = new Point(15, 385);
+        button3.Size = new Size(187, 65);
         button3.Cursor = Cursors.Hand;
         button3.Click += button3_Click;
 
-        button4.Font = new Font("Segoe UI", 10.5F);
+        button4.Font = new Font("Segoe UI", 11F);
         button4.ForeColor = Color.White;
         button4.BackColor = Color.FromArgb(30, 30, 46);
         button4.FlatStyle = FlatStyle.Flat;
         button4.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
-        button4.Location = new Point(213, 325);
-        button4.Size = new Size(187, 55);
+        button4.Location = new Point(213, 385);
+        button4.Size = new Size(187, 65);
         button4.Cursor = Cursors.Hand;
         button4.Click += button4_Click;
 
@@ -155,7 +155,7 @@ partial class GameForm
         labelResult.ForeColor = Color.FromArgb(74, 222, 128);
         labelResult.AutoSize = false;
         labelResult.TextAlign = ContentAlignment.MiddleCenter;
-        labelResult.Location = new Point(15, 390);
+        labelResult.Location = new Point(15, 465);
         labelResult.Size = new Size(385, 30);
 
         gameTimer.Interval = 1000;
@@ -164,7 +164,7 @@ partial class GameForm
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(13, 13, 20);
-        ClientSize = new Size(420, 430);
+        ClientSize = new Size(420, 510);
         panelProgressBar.Controls.Add(panelProgressFill);
         Controls.Add(labelScore);
         Controls.Add(labelProgress);

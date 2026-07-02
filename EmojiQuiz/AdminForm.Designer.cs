@@ -22,8 +22,6 @@ partial class AdminForm
 
     private void InitializeComponent()
     {
-        FormBorderStyle = FormBorderStyle.FixedSingle;
-        MaximizeBox = false;
         labelTitle = new Label();
         labelEmoji = new Label();
         textEmoji = new TextBox();
@@ -36,61 +34,61 @@ partial class AdminForm
         SuspendLayout();
 
         labelTitle.Text = "⚙ Администратор";
-        labelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+        labelTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
         labelTitle.ForeColor = Color.FromArgb(168, 154, 249);
         labelTitle.AutoSize = false;
         labelTitle.TextAlign = ContentAlignment.MiddleCenter;
-        labelTitle.Location = new Point(0, 20);
-        labelTitle.Size = new Size(420, 40);
+        labelTitle.Location = new Point(0, 40);
+        labelTitle.Size = new Size(420, 45);
 
-        labelEmoji.Text = "Эмодзи:";
-        labelEmoji.Font = new Font("Segoe UI", 10F);
+        labelEmoji.Text = "Эмодзи";
+        labelEmoji.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
         labelEmoji.ForeColor = Color.FromArgb(136, 133, 170);
-        labelEmoji.Location = new Point(30, 90);
-        labelEmoji.Size = new Size(150, 25);
+        labelEmoji.Location = new Point(60, 110);
+        labelEmoji.Size = new Size(300, 18);
 
         textEmoji.Font = new Font("Segoe UI Emoji", 12F);
         textEmoji.ForeColor = Color.White;
         textEmoji.BackColor = Color.FromArgb(30, 30, 46);
         textEmoji.BorderStyle = BorderStyle.FixedSingle;
-        textEmoji.Location = new Point(30, 115);
-        textEmoji.Size = new Size(360, 30);
+        textEmoji.Location = new Point(60, 130);
+        textEmoji.Size = new Size(300, 32);
 
-        labelAnswer.Text = "Ответ (название):";
-        labelAnswer.Font = new Font("Segoe UI", 10F);
+        labelAnswer.Text = "Ответ (название)";
+        labelAnswer.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
         labelAnswer.ForeColor = Color.FromArgb(136, 133, 170);
-        labelAnswer.Location = new Point(30, 160);
-        labelAnswer.Size = new Size(200, 25);
+        labelAnswer.Location = new Point(60, 178);
+        labelAnswer.Size = new Size(300, 18);
 
         textAnswer.Font = new Font("Segoe UI", 11F);
         textAnswer.ForeColor = Color.White;
         textAnswer.BackColor = Color.FromArgb(30, 30, 46);
         textAnswer.BorderStyle = BorderStyle.FixedSingle;
-        textAnswer.Location = new Point(30, 185);
-        textAnswer.Size = new Size(360, 30);
+        textAnswer.Location = new Point(60, 198);
+        textAnswer.Size = new Size(300, 32);
 
-        labelCategory.Text = "Категория:";
-        labelCategory.Font = new Font("Segoe UI", 10F);
+        labelCategory.Text = "Категория";
+        labelCategory.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
         labelCategory.ForeColor = Color.FromArgb(136, 133, 170);
-        labelCategory.Location = new Point(30, 230);
-        labelCategory.Size = new Size(200, 25);
+        labelCategory.Location = new Point(60, 246);
+        labelCategory.Size = new Size(300, 18);
 
         textCategory.Font = new Font("Segoe UI", 11F);
         textCategory.ForeColor = Color.White;
         textCategory.BackColor = Color.FromArgb(30, 30, 46);
         textCategory.BorderStyle = BorderStyle.FixedSingle;
         textCategory.Text = "Фильмы";
-        textCategory.Location = new Point(30, 255);
-        textCategory.Size = new Size(360, 30);
+        textCategory.Location = new Point(60, 266);
+        textCategory.Size = new Size(300, 32);
 
-        buttonAdd.Text = "➕ Добавить";
-        buttonAdd.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+        buttonAdd.Text = "+ Добавить";
+        buttonAdd.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
         buttonAdd.ForeColor = Color.White;
         buttonAdd.BackColor = Color.FromArgb(124, 108, 248);
         buttonAdd.FlatStyle = FlatStyle.Flat;
         buttonAdd.FlatAppearance.BorderSize = 0;
-        buttonAdd.Location = new Point(30, 310);
-        buttonAdd.Size = new Size(360, 50);
+        buttonAdd.Location = new Point(60, 325);
+        buttonAdd.Size = new Size(300, 52);
         buttonAdd.Cursor = Cursors.Hand;
         buttonAdd.Click += buttonAdd_Click;
 
@@ -100,15 +98,17 @@ partial class AdminForm
         buttonBack.BackColor = Color.FromArgb(13, 13, 20);
         buttonBack.FlatStyle = FlatStyle.Flat;
         buttonBack.FlatAppearance.BorderSize = 0;
-        buttonBack.Location = new Point(30, 370);
-        buttonBack.Size = new Size(360, 35);
+        buttonBack.Location = new Point(60, 390);
+        buttonBack.Size = new Size(300, 35);
         buttonBack.Cursor = Cursors.Hand;
         buttonBack.Click += buttonBack_Click;
 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(13, 13, 20);
-        ClientSize = new Size(420, 430);
+        ClientSize = new Size(420, 445);
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
         Controls.Add(labelTitle);
         Controls.Add(labelEmoji);
         Controls.Add(textEmoji);

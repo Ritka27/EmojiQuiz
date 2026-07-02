@@ -208,8 +208,8 @@ partial class MainForm
         comboCategory.BackColor = Color.FromArgb(30, 30, 46);
         comboCategory.FlatStyle = FlatStyle.Flat;
         comboCategory.DropDownStyle = ComboBoxStyle.DropDownList;
-        comboCategory.Location = new Point(15, 355);
-        comboCategory.Size = new Size(390, 30);
+        comboCategory.Location = new Point(75, 355);
+        comboCategory.Size = new Size(270, 30);
 
         buttonAdmin.Text = "⚙  Администратор";
         buttonAdmin.Font = new Font("Segoe UI", 12F);
