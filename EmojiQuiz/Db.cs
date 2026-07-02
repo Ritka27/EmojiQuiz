@@ -120,4 +120,21 @@ static class Db
             stats.BestScore = score;
         ctx.SaveChanges();
     }
+
+    public static List<Question> GetAll()
+    {
+        using var ctx = new QuizContext();
+        return ctx.Questions.OrderBy(q => q.Category).ThenBy(q => q.Answer).ToList();
+    }
+
+    public static void Delete(int id)
+    {
+        using var ctx = new QuizContext();
+        var q = ctx.Questions.Find(id);
+        if (q != null)
+        {
+            ctx.Questions.Remove(q);
+            ctx.SaveChanges();
+        }
+    }
 }

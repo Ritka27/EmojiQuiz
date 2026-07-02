@@ -112,7 +112,8 @@ public partial class MainForm : Form
     private void buttonAdmin_Click(object sender, EventArgs e)
     {
         var admin = new AdminForm();
-        admin.FormClosed += (s, e) => LoadStats();
+        admin.FormClosed += (s, e) => { Show(); LoadStats(); };
+        Hide();
         admin.Show();
     }
 }
